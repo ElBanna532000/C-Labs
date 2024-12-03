@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1733244631 source:/media/banna/DATA/Courses/ITI 9m/C++(OOP)/Stack Menu/main.cpp
+	<iostream>
+	<chrono>
+	<thread>
+	"conio.h"
+
+1731952023 /media/banna/DATA/Courses/ITI 9m/C++(OOP)/Stack Menu/conio.h
+	<termios.h>
+	<unistd.h>
+	<stdio.h>
+	<fcntl.h>
+	<stdlib.h>
+	<string.h>
+
