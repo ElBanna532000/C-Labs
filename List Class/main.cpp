@@ -59,9 +59,9 @@ class List{
             cout<<endl;
         }
 
-        List operator=(List &src){
+        void operator=(List &src){
             if (this == &src) {
-                return *this;
+                return;
             }
 
             this->size=src.size;
@@ -70,9 +70,9 @@ class List{
             items = new int[size];
             for(int i=0; i< size; i++){
                 items[i]=src.items[i];
-                //cout<<items[i]<<endl;
+                cout<<items[i]<<endl;
             }
-            return *this;
+            //return *this;
         }
 
         ~List(){

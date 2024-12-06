@@ -38,28 +38,33 @@ class String{           //array of characters - asks user for the size of the st
             }
             return i;
         }
-        //String to lower
-        char *strToLower(){
-            int i=0;
-            while(str[i]!=TERM){
-                if(str[i] >= 'A' && str[i] <= 'Z')
-                    str[i]+=32;
-                i++;
+
+        void reSize(int newSize, char c=' '){        //str1-> 5 -----> 9
+
+            char* newArray=new char[newSize]; //new pointer points to new array with the new size
+            if(this->size < newSize){
+                //if new size bigger than current size
+                for(int i=0; i < this->size; i++){
+                    newArray[i]=this->str[i];
+                }
+                for(int i=this->size; i<newSize; i++){
+                    newArray[i]=c;
+                }
+                newArray[newSize]=TERM;
+                //return *this;
             }
-            return str;
-        }
-        //String to upper
-        char *strToUpper(){
-            int i=0;
-            while(str[i]!=TERM){
-                if(str[i] >= 'a' && str[i] <= 'z')
-                    str[i]-=32;
-                i++;
+            else{       //new size < current size
+                for(int i=0; i<newSize;i++){
+                    newArray[i]=this->str[i];
+                }
+                newArray[newSize]=TERM;
             }
-            return str;
+            delete [] this->str;
+            this->str=newArray;
+            //return *this;
         }
 
-        String operator+=(const String &str2){
+        void operator+=(const String &str2){
 
             int sizeNew=this->size+str2.size;
             char *strNew=new char[sizeNew+1];
@@ -76,8 +81,7 @@ class String{           //array of characters - asks user for the size of the st
             delete[] this->str;         //delete the old array allocation
             this->str=strNew;           //assign the THIS pointer to points to the new array
             this->size=sizeNew;         //assign the THIS size to the new size
-
-            return *this;
+            //return *this;
         }
 
         bool operator<=(const String &str2){
@@ -115,8 +119,10 @@ class String{           //array of characters - asks user for the size of the st
                 cout <<"Empty String"<<endl;
         }
 
+
+
         ~String(){
-            delete[] this->str
+            delete[] this->str;
         }
 };
 
@@ -137,6 +143,9 @@ int main()
         cout<<"s1 is smaller than or equal to s2"<<endl;
     else
         cout<<"s1 is bigger than s2"<<endl;
+
+    s2.reSize(4);
+    s2.display();
 
 
     /*cout <<"Size of the array is "<< s1.strSize() << endl;
